@@ -38,7 +38,7 @@ int RecordRefractometer( toilet_t *_toilet ){
 
     cmp_init(&cmp, fh, file_reader, file_writer);
 
-    if( !cmp_write_map(&cmp, 6) )
+    if( !cmp_write_map(&cmp, 7) )
 		error_and_exit(cmp_strerror(&cmp));
 
 	if (!cmp_write_str(&cmp, "recordedTimestamp", 17))
