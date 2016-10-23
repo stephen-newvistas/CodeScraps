@@ -11,7 +11,7 @@
 #include <time.h>
 
 #include "globals.h"
-#include "../cmp/cmp.h"
+#include "cmp.h"
 #include "structures.h"
 
 

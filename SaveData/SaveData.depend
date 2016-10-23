@@ -75,3 +75,37 @@
 1477215056 source:/home/pi/SaveData/recordData.c
 	"recordData.h"
 
+1477213392 source:/home/pi/CodeScraps/SaveData/cmp.c
+	<stdbool.h>
+	<stddef.h>
+	<stdint.h>
+	"cmp.h"
+
+1477213392 /home/pi/CodeScraps/SaveData/cmp.h
+
+1477215158 source:/home/pi/CodeScraps/SaveData/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"globals.h"
+	"structures.h"
+	"recordData.h"
+
+1477213660 /home/pi/CodeScraps/SaveData/globals.h
+	<string.h>
+
+1477213900 /home/pi/CodeScraps/SaveData/structures.h
+
+1477216326 /home/pi/CodeScraps/SaveData/recordData.h
+	<errno.h>
+	<inttypes.h>
+	<stdbool.h>
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"globals.h"
+	"cmp.h"
+	"structures.h"
+

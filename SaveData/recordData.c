@@ -30,7 +30,8 @@ int RecordRefractometer( toilet_t *_toilet ){
 	cmp_ctx_t cmp;
 
 	//	open the file for the refractometer
-    fh = fopen("/opt/SpectrAuto/Data/refractometer.dat", "w+b");
+//    fh = fopen("/opt/SpectrAuto/Data/refractometer.dat", "w+b");
+    fh = fopen( "refractometer.dat", "w+b");
 
     if (fh == NULL)
         error_and_exit("Error opening data.dat");
