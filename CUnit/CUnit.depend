@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1463087331 source:/home/pi/CUnit/main.c
+	<stdio.h>
+	<stdlib.h>
+	<CUnit/CUnit.h>
+	<CUnit/CUnit_intl.h>
+	<CUnit/Util.h>
+	<CUnit/Console.h>
+
+1463014052 /usr/local/include/CUnit/CUnit.h
+	<string.h>
+	<math.h>
+	"CUError.h"
+	"TestDB.h"
+	"TestRun.h"
+
+1463014052 /usr/local/include/CUnit/CUError.h
+	<errno.h>
+	"CUnit.h"
+
+1463014052 /usr/local/include/CUnit/TestDB.h
+	<setjmp.h>
+	"CUnit.h"
+	"CUError.h"
+
+1463014052 /usr/local/include/CUnit/TestRun.h
+	"CUnit.h"
+	"CUError.h"
+	"TestDB.h"
+	<stdio.h>
+
+1463014052 /usr/local/include/CUnit/CUnit_intl.h
+	<libintl.h>
+
+1463014052 /usr/local/include/CUnit/Util.h
+	"CUnit.h"
+
+1463014052 /usr/local/include/CUnit/Console.h
+	"CUnit.h"
+	"TestDB.h"
+

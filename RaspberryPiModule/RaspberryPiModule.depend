@@ -1,0 +1,91 @@
+# depslib dependency file v1.0
+1469246955 source:/home/pi/RaspberryPiModule/main.c
+	<stdio.h>
+	<stdlib.h>
+	"rPiModule/UART.h"
+	"rPiModule/loops.h"
+
+1469245714 /home/pi/RaspberryPiModule/rPiModule/UART.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	<fcntl.h>
+	<errno.h>
+	<termios.h>
+	<sys/select.h>
+	"../rs485/packetformatter.h"
+	"../rs485/charactercode.h"
+	"../rs485/devicehandler.h"
+	"../globals.h"
+	<IPC.h>
+
+1469244361 /home/pi/RaspberryPiModule/rs485/packetformatter.h
+
+1469244361 /home/pi/RaspberryPiModule/rs485/charactercode.h
+
+1469244361 /home/pi/RaspberryPiModule/rs485/devicehandler.h
+
+1469245728 /home/pi/RaspberryPiModule/globals.h
+	<string.h>
+
+1469244609 /home/pi/RaspberryPiModule/rPiModule/loops.h
+	<stdio.h>
+	<stdlib.h>
+	<sys/select.h>
+	<sys/time.h>
+
+1469244609 source:/home/pi/RaspberryPiModule/rPiModule/loops.c
+	"loops.h"
+
+1469246697 source:/home/pi/RaspberryPiModule/rPiModule/UART.c
+	"UART.h"
+
+1469244361 source:/home/pi/RaspberryPiModule/rs485/datahandler.c
+	"datahandler.h"
+	<stdio.h>
+
+1469244361 /home/pi/RaspberryPiModule/rs485/datahandler.h
+
+1469246705 source:/home/pi/RaspberryPiModule/rs485/device.c
+	"../config.h"
+	"devicehandler.h"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	<fcntl.h>
+	<errno.h>
+	<termios.h>
+	<sys/select.h>
+	"charactercode.h"
+	"packetformatter.h"
+	"charactercode.h"
+	"io.h"
+
+1469246716 /home/pi/RaspberryPiModule/config.h
+
+1469246747 /home/pi/RaspberryPiModule/rs485/io.h
+
+1469246757 source:/home/pi/RaspberryPiModule/rs485/devicehandler.c
+	"../config.h"
+	"devicehandler.h"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	<fcntl.h>
+	<errno.h>
+	<termios.h>
+	<sys/select.h>
+	"charactercode.h"
+	"packetformatter.h"
+	"charactercode.h"
+	"io.h"
+
+1469244361 source:/home/pi/RaspberryPiModule/rs485/packetformatter.c
+	<stdio.h>
+	<string.h>
+	"packetformatter.h"
+	"charactercode.h"
+
