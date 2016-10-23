@@ -1,0 +1,77 @@
+# depslib dependency file v1.0
+1477215158 source:/home/pi/SaveData/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"globals.h"
+	"structures.h"
+	"recordData.h"
+
+1477213107 /home/pi/MMC/globals.h
+	<string.h>
+
+1477206486 /home/pi/MMC/structures.h
+
+1477213090 /home/pi/MMC/recordData.h
+	<errno.h>
+	<inttypes.h>
+	<stdbool.h>
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"globals.h"
+	"../cmp/cmp.h"
+	"structures.h"
+
+1477194986 /home/pi/cmp/cmp.h
+
+1477194986 source:/home/pi/cmp/cmp.c
+	<stdbool.h>
+	<stddef.h>
+	<stdint.h>
+	"cmp.h"
+
+1477213017 source:/home/pi/MMC/recordData.c
+	"recordData.h"
+
+1477210501 source:/home/pi/cmp/examples/example2.c
+	<errno.h>
+	<inttypes.h>
+	<stdbool.h>
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../cmp.h"
+
+1477213392 source:/home/pi/SaveData/cmp.c
+	<stdbool.h>
+	<stddef.h>
+	<stdint.h>
+	"cmp.h"
+
+1477213392 /home/pi/SaveData/cmp.h
+
+1477213660 /home/pi/SaveData/globals.h
+	<string.h>
+
+1477213900 /home/pi/SaveData/structures.h
+
+1477214429 /home/pi/SaveData/recordData.h
+	<errno.h>
+	<inttypes.h>
+	<stdbool.h>
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"globals.h"
+	"../cmp/cmp.h"
+	"structures.h"
+
+1477215056 source:/home/pi/SaveData/recordData.c
+	"recordData.h"
+
