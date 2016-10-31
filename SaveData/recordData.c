@@ -83,8 +83,9 @@ int RecordRefractometer( toilet_t *_toilet ){
     if (!cmp_write_u8(&cmp, _toilet->modules.refractometer->data.heater ))
         error_and_exit(cmp_strerror(&cmp));
 
-
+#ifdef DISPLAY_DATA
 	ReadData( fh , &cmp );
+#endif // DISPLAY_DATA
 
 	fclose(fh);
 
