@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="CodeScraps" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/CodeScraps" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="/usr/local/lib/libIPC.so" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/CodeScraps" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="/usr/local/lib" />
+		</Compiler>
+		<Linker>
+			<Add directory="/usr/local/include" />
+		</Linker>
+		<Unit filename="../Libraries/EscapeSerial/escapeSerial.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Libraries/EscapeSerial/escapeSerial.h" />
+		<Unit filename="../MMC/USB.c">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="../MMC/USB.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="QueueWatcher.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="usb_serial.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="usb_serial.h" />
+		<Extensions>
+			<code_completion>
+				<search_path add="/home/pi/Libraries" />
+				<search_path add="/home/pi/Libraries/EscapeSerial" />
+			</code_completion>
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

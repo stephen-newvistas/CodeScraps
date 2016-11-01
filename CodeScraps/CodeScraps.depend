@@ -1,0 +1,178 @@
+# depslib dependency file v1.0
+1477180882 source:/home/pi/CodeScraps/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<IPC.h>
+	"../Libraries/EscapeSerial/escapeSerial.h"
+	"usb_serial.h"
+
+1461583642 /usr/local/include/IPC.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/ipc.h>
+	<sys/msg.h>
+	<sys/sem.h>
+	<errno.h>
+
+1469408804 /home/pi/rs485/packetformatter.h
+
+1469433341 source:/home/pi/CodeScraps/escapeSerial.c
+	"escapeSerial.h"
+
+1469433136 /home/pi/CodeScraps/escapeSerial.h
+	<string.h>
+
+1469594966 /home/pi/Libraries/EscapeSerial/escapeSerial.h
+	<string.h>
+
+1469434866 source:/home/pi/Libraries/EscapeSerial/escapeSerial.c
+	"escapeSerial.h"
+
+1473894760 /home/pi/CodeScraps/usb_serial.h
+	<IPC.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	<fcntl.h>
+	<errno.h>
+	<termios.h>
+	<sys/select.h>
+	<dirent.h>
+
+1473950902 source:/home/pi/CodeScraps/usb_serial.c
+	"usb_serial.h"
+
+1469216972 source:/home/pi/MMC/USB.c
+	"USB.h"
+
+1473895671 /home/pi/MMC/USB.h
+	"usb_serial.h"
+	"ModuleManager.h"
+	<jansson.h>
+
+1473797229 /home/pi/MMC/usb_serial.h
+	"config.h"
+	<IPC.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	<fcntl.h>
+	<errno.h>
+	<termios.h>
+	<sys/select.h>
+	<dirent.h>
+
+1473789145 /home/pi/MMC/config.h
+	"logging.h"
+
+1469216972 /home/pi/MMC/logging.h
+
+1473859480 /home/pi/MMC/ModuleManager.h
+	"globals.h"
+	"logging.h"
+	"../rpiuart/packetformatter.h"
+	"JSONpackaging.h"
+	"modules/module.h"
+	"modules/super_module.h"
+	"modules/bidet.h"
+	"modules/misc.h"
+	"modules/refractometer.h"
+	"modules/ppg.h"
+	"modules/gui_module.h"
+
+1477956126 /home/pi/MMC/globals.h
+	<string.h>
+
+1477109606 /home/pi/rpiuart/packetformatter.h
+
+1458297822 /home/pi/MMC/JSONpackaging.h
+	<jansson.h>
+
+1473795092 /home/pi/MMC/modules/module.h
+	"../config.h"
+	"../globals.h"
+	"../structures.h"
+	"../support.h"
+	"../../rpiuart/packetformatter.h"
+	"../JSONpackaging.h"
+	<stdio.h>
+
+1477956126 /home/pi/MMC/structures.h
+
+1473789145 /home/pi/MMC/support.h
+	"globals.h"
+
+1473795040 /home/pi/MMC/modules/super_module.h
+	"module.h"
+	"../support.h"
+	<fcntl.h>
+
+1473795003 /home/pi/MMC/modules/bidet.h
+	"module.h"
+
+1473795003 /home/pi/MMC/modules/misc.h
+	"module.h"
+	"../support.h"
+	<fcntl.h>
+
+1473789145 /home/pi/MMC/modules/refractometer.h
+	"module.h"
+	"../support.h"
+	<fcntl.h>
+
+1473795040 /home/pi/MMC/modules/ppg.h
+	"module.h"
+	"../support.h"
+	<fcntl.h>
+
+1473795154 /home/pi/MMC/modules/gui_module.h
+	"module.h"
+	"../config.h"
+	"../support.h"
+	<fcntl.h>
+
+1477957479 source:/home/pi/CodeScraps/CodeScraps/usb_serial.c
+	"usb_serial.h"
+
+1477957479 /home/pi/CodeScraps/CodeScraps/usb_serial.h
+	<IPC.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	<fcntl.h>
+	<errno.h>
+	<termios.h>
+	<sys/select.h>
+	<dirent.h>
+
+1477965018 source:/home/pi/CodeScraps/CodeScraps/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<IPC.h>
+	"../../rpiuart/packetformatter.h"
+	"usb_serial.h"
+	"../../MMC/globals.h"
+	"../../MMC/structures.h"
+	"../../MMC/recordData.h"
+
+1477964920 /home/pi/MMC/recordData.h
+	<errno.h>
+	<inttypes.h>
+	<stdbool.h>
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"globals.h"
+	"../Libraries/cmp/cmp.h"
+	"structures.h"
+
+1477956243 /home/pi/Libraries/cmp/cmp.h
+
