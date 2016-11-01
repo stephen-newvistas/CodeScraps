@@ -1,0 +1,13 @@
+485DIR = ../../rpiuart/
+ModDIR = modules/
+CC = gcc -L/usr/local/lib -L/usr/local/include -lIPC
+CFLAGS = -Wall
+SOURCES = main.c ../../Libraries/EscapeSerial/escapeSerial.c
+RS485 = packetformatter.c io.c devicehandler.c datahandler.c
+OBJECTS = $(SOURCES:.c=.o) $(addprefix $(485DIR),$(RS485:.c=.o))
+EXECUTABLE = main
+
+$(EXECUTABLE):	$(OBJECTS)
+
+clean:
+	rm -f $(EXECUTABLE) $(OBJECTS)
