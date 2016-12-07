@@ -39,14 +39,14 @@
 	<string.h>
 	<stdio.h>
 
-1481145897 source:/home/pi/CodeScraps/SC16IS17XX/main.c
+1481148384 source:/home/pi/CodeScraps/SC16IS17XX/main.c
 	"bluetoothTxRx.h"
 
 1481056897 /home/pi/CodeScraps/SC16IS17XX/sc16is7xx.h
 	<stdlib.h>
 	<unistd.h>
 
-1481145965 source:/home/pi/CodeScraps/SC16IS17XX/bluetoothTxRx.c
+1481149009 source:/home/pi/CodeScraps/SC16IS17XX/bluetoothTxRx.c
 	"bluetoothTxRx.h"
 
 1481121218 /home/pi/CodeScraps/SC16IS17XX/bluetoothTxRxl.h
@@ -62,7 +62,7 @@
 	"sc16is7xx.h"
 	"bluetoothTxRxl.h"
 
-1481145513 /home/pi/CodeScraps/SC16IS17XX/bluetoothTxRx.h
+1481149057 /home/pi/CodeScraps/SC16IS17XX/bluetoothTxRx.h
 	<unistd.h>
 	<stdlib.h>
 	<unistd.h>
@@ -71,6 +71,5 @@
 	<sys/stat.h>
 	<sys/time.h>
 	<sys/select.h>
-	<fcntl.h>
 	"sc16is7xx.h"
 

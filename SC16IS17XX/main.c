@@ -6,6 +6,7 @@
 
 void Print( unsigned char *_p ){
     printf( "%s\n" , _p );
+    Bluetooth_SendMessage( _p );
 }
 
 int main(int argc, char **argv){
@@ -17,7 +18,7 @@ int main(int argc, char **argv){
 	/* main loop */
 	while (1) {
 
-        loop();
+        Bluetooth_CheckMessage();
 
 	} /* while(1) */
 

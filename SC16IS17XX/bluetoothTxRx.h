@@ -14,15 +14,10 @@
 #include "sc16is7xx.h"
 
 void    Bluetooth_Init( void*(*f1)(unsigned char * ));//Packet *) );
-void    Bluetooth_Setup( void );
+int     Bluetooth_Setup( void );
 int     Bluetooth_SendMessage( unsigned char * ); //Packet *_packet );
-int     Bluetooth_CheckMessage( unsigned char * ); //Packet *_packet );
+int     Bluetooth_CheckMessage( void );
 
-enum BT_ERROR { BT_ERROR_PTMX , BT_ERROR_SPT_NAME , BT_ERROR_SPT_MODE , BT_ERROR_SPT_UNLOCK , BT_ERROR_I2C_OPEN , BT_ERROR_SC16IS7XX_CREATE , BT_ERROR_SC16IS7XX_BAUD , BT_ERROR_GPIO};
-
-
-
-void loop( void );
-
+enum BT_ERROR { BT_NO_ERROR , BT_ERROR_READ , BT_ERROR_WRITE , BT_ERROR_PTMX , BT_ERROR_SPT_NAME , BT_ERROR_SPT_MODE , BT_ERROR_SPT_UNLOCK , BT_ERROR_I2C_OPEN , BT_ERROR_SC16IS7XX_CREATE , BT_ERROR_SC16IS7XX_BAUD , BT_ERROR_GPIO};
 
 #endif // BLUETOOTHTXRXL_H_INCLUDED
