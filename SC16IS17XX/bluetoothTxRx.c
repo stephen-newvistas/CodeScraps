@@ -32,8 +32,9 @@ void clearbuffer( void );
 
 void (*CalledFunction)( unsigned char *_p );
 
-void Bluetooth_Init( void *_IncomingMessageFunction() ){//Packet *) );
+int Bluetooth_Init( void *_IncomingMessageFunction() ){//Packet *) );
     CalledFunction = _IncomingMessageFunction;
+    return Bluetooth_Setup();
 }
 
 int Bluetooth_SendMessage( unsigned char *_message ){ //Packet *_packet );
@@ -68,7 +69,7 @@ int Bluetooth_Setup( void ){ //#SCD create int as return when return codes are c
 	}
 
     /*  For debug purposes print to screen the name of the virtual terminal  */
-	fprintf(stderr,"Virtual terminal is %s.\n", buf_rx);    //#SCD debug
+//	fprintf(stderr,"Virtual terminal is %s.\n", buf_rx);    //#SCD debug
 
     /*  Change the mode and owner of the SPT to the UID of the calling process  */
 	if( grantpt( ptyfd ) == -1 ){       //  if error changing mode...
@@ -114,7 +115,7 @@ int Bluetooth_Setup( void ){ //#SCD create int as return when return codes are c
 	}
 
     /*  Print baud rate for debug purposes  */
-	fprintf(stderr,"Baudrate is %d.\n\n", baudrate);    //#SCD debug
+//	fprintf(stderr,"Baudrate is %d.\n\n", baudrate);    //#SCD debug
 }
 
 void canwrite( void ){

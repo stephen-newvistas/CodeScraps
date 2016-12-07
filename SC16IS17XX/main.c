@@ -5,7 +5,6 @@
 
 
 void Print( unsigned char *_p ){
-    printf( "%s\n" , _p );
     Bluetooth_SendMessage( _p );
 }
 

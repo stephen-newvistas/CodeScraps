@@ -13,8 +13,7 @@
 
 #include "sc16is7xx.h"
 
-void    Bluetooth_Init( void*(*f1)(unsigned char * ));//Packet *) );
-int     Bluetooth_Setup( void );
+int    Bluetooth_Init( void*(*f1)(unsigned char * ));//Packet *) )
 int     Bluetooth_SendMessage( unsigned char * ); //Packet *_packet );
 int     Bluetooth_CheckMessage( void );
 

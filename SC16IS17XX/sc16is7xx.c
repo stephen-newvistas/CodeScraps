@@ -426,8 +426,7 @@ sc16is7xx_new(int spi_i2c_fd, int i2c_addr, unsigned int flags)
 
 
 	for (idt = sc16is7xx_initdata; idt->regnum != END_MARK; idt++) {
-		printf("Init: reg %d = %d (0x%02x)\n",idt->regnum,
-			idt->val, idt->val);
+//		printf("Init: reg %d = %d (0x%02x)\n",idt->regnum, idt->val, idt->val);
 		if (sc16is7xx_reg_wr(p, idt->regnum, idt->val) == -1) {
 			perror("Cannot write init data");
 			goto err_out;
@@ -441,7 +440,7 @@ sc16is7xx_new(int spi_i2c_fd, int i2c_addr, unsigned int flags)
 			perror("ioctl()");
 			continue;
 		}
-		printf("Reg %d -> %u (0x%02x)\n", i, val, val);
+//		printf("Reg %d -> %u (0x%02x)\n", i, val, val);
 	}
 
 
