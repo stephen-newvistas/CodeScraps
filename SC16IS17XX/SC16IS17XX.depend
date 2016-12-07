@@ -27,3 +27,31 @@
 	<stdlib.h>
 	<unistd.h>
 
+1481056897 source:/home/pi/CodeScraps/SC16IS17XX/sc16is7xx.c
+	<fcntl.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<linux/types.h>
+	<linux/spi/spidev.h>
+	<linux/i2c.h>
+	<linux/i2c-dev.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1481063666 source:/home/pi/CodeScraps/SC16IS17XX/main.c
+	"sc16is7xx.h"
+	<unistd.h>
+	<stdlib.h>
+	<unistd.h>
+	<stdio.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<sys/time.h>
+	<sys/select.h>
+	<fcntl.h>
+
+1481056897 /home/pi/CodeScraps/SC16IS17XX/sc16is7xx.h
+	<stdlib.h>
+	<unistd.h>
+
