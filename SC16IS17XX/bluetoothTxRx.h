@@ -12,22 +12,15 @@
 #include <fcntl.h>
 
 #include "sc16is7xx.h"
-#include "bluetoothTxRxl.h"
 
-extern int message;
+void    Bluetooth_Init( void*(*f1)(unsigned char * ));//Packet *) );
+void    Bluetooth_Setup( void );
+int     Bluetooth_SendMessage( unsigned char * ); //Packet *_packet );
+int     Bluetooth_CheckMessage( unsigned char * ); //Packet *_packet );
 
-void canwrite( void );
+enum BT_ERROR { BT_ERROR_PTMX , BT_ERROR_SPT_NAME , BT_ERROR_SPT_MODE , BT_ERROR_SPT_UNLOCK , BT_ERROR_I2C_OPEN , BT_ERROR_SC16IS7XX_CREATE , BT_ERROR_SC16IS7XX_BAUD , BT_ERROR_GPIO};
 
-void xwrite( void );
 
-void ywrite( unsigned char *_buffer , int _size );
-
-void canread( void );
-
-void xread( void );
-
-void clearbuffer( void );
-void setup( void );
 
 void loop( void );
 

@@ -1,4 +1,4 @@
-#include "bluetoothTxRxl.h"
+#include "bluetoothTxRx.h"
 
 
 
@@ -22,9 +22,25 @@ int i, j;                                   //
 fd_set readfds, writefds;                   //
 struct timeval to;                          // used for timeouts
 unsigned int xfers, txcounter, rxcounter;   //
-int gpio_out;
-int message;                    //  #SCD I don't what this is for
+int gpio_out;                               //  #SCD I don't what this is for
+int message;
+int count;
+unsigned char *buf_ptr;
 
+void canwrite( void );
+void xwrite( void );
+void ywrite( unsigned char *_buffer , int *_size );
+void canread( void );
+void xread( void );
+void yread( void );
+int  zread( unsigned char * );
+void clearbuffer( void );
+
+void (*CalledFunction)( unsigned char *_p );
+
+void    Bluetooth_Init( void *_IncomingMessageFunction() ){//Packet *) );
+    CalledFunction = _IncomingMessageFunction;
+}
 
 void canwrite( void ){
 
@@ -59,12 +75,12 @@ void xwrite( void ){
     }
 }
 
-void ywrite( unsigned char *_buffer , int _size ){
+void ywrite( unsigned char *_buffer , int *_size ){
     canwrite();
 
     if( FD_ISSET( ptyfd , &readfds ) ){
-        j = sc16is7xx_write( sc16is7xx, _buffer, _size );          //  writes buf_rx to sc16is7xx
-
+        j = sc16is7xx_write( sc16is7xx, (const void*)_buffer, *_size );          //  writes buf_rx to sc16is7xx
+        *_size = 0;
         if (j < 0) {                                        //  if error writing to sc16...
             perror("sc16is7xx_write()");
             exit(1);    //#SCD create return code
@@ -102,11 +118,82 @@ void xread( void ){
             }
 
             if( i > 0 ){
+                memcpy( buf_ptr , buf_rx , i );
+                buf_ptr += i;
+                count += i;
+            }
+
+            if( count == 5 ){
+                count = 0;
                 message = 1;
             }
         }
 
 
+}
+
+void yread( void ){
+    unsigned char a;
+    canread();
+    if( rxlvl > 0 ){
+        while( rxlvl > 0 ){
+            canread();
+
+            if( FD_ISSET( ptyfd , &writefds ) ){
+                i = sc16is7xx_read( sc16is7xx , &a , 1 );   //   read sc16 write to buf_rx, i is number of bytes written
+                if( i < 0 ){                                                   //   if error...
+                    perror("sc16is7xx_read()");
+                    exit(1);
+                }
+
+                if( i > 0 ){
+                    memcpy( buf_ptr , &a , i );
+                    buf_ptr += i;
+                    count += i;
+                }
+
+                if( count >= 5 ){
+                    message = 1;
+                    buf_ptr = buf_tx;
+                }
+            }
+        }
+        CalledFunction( buf_tx );
+    }
+}
+
+int zread( unsigned char *_buffer ){
+    unsigned char a;
+    int counter = 0;
+    canread();
+
+    if( rxlvl > 0 ){
+        while( rxlvl > 0 ){
+            canread();
+
+            if( FD_ISSET( ptyfd , &writefds ) ){
+                i = sc16is7xx_read( sc16is7xx , &a , 1 );   //   read sc16 write to buf_rx, i is number of bytes written
+                if( i < 0 ){                                                   //   if error...
+                    perror("sc16is7xx_read()");
+                    return -1;
+                }
+
+                if( i > 0 ){
+                    memcpy( buf_ptr , &a , i );
+                    buf_ptr += i;
+                    count += i;
+                    counter += 1;
+                }
+
+                if( count >= 5 ){
+                    message = 1;
+                    buf_ptr = buf_tx;
+                }
+            }
+        }
+        memcpy( _buffer , buf_tx , counter );
+    }
+    return counter;
 }
 
 void clearbuffer( void ){
@@ -122,25 +209,27 @@ void clearbuffer( void ){
     }
 }
 
-void setup( void ){ //#SCD create int as return when return codes are created
+void Bluetooth_Setup( void ){ //#SCD create int as return when return codes are created
     /*  Set the values for the i2c port and sc16 chip  */
 	i2c_devname = DEFAULT_DEVICE;
 	i2c_addr = DEFAULT_I2C_ADDR;
 	baudrate = DEFAULT_BAUDRATE;
 	gpio_out = -1;
 	message = 0;
+	count = 0;
+	buf_ptr = buf_tx;
 
     /*  Create and open a psuedoterminal  */
 	ptyfd = open( "/dev/ptmx", O_RDWR|O_NOCTTY|O_NONBLOCK );
 	if( ptyfd == -1 ){                  //  if error opening psuedoterminal...
 		perror("/dev/ptmx");
-		exit(1);
+		return BT_ERROR_PTMX;
 	}
 
     /* Place the name of the slave psuedoterminal SPT in buf_rx  */
 	if( ptsname_r( ptyfd , (char*)buf_rx , sizeof(buf_rx) ) ){
 		perror("ptsname_r()");          //  if error getting SPT name...
-		exit(1);
+		return BT_ERROR_SPT_NAME;
 	}
 
     /*  For debug purposes print to screen the name of the virtual terminal  */
@@ -149,32 +238,32 @@ void setup( void ){ //#SCD create int as return when return codes are created
     /*  Change the mode and owner of the SPT to the UID of the calling process  */
 	if( grantpt( ptyfd ) == -1 ){       //  if error changing mode...
 		perror( "grantpt()" );
-		exit(1);    //  #SCD create return code
+		return BT_ERROR_SPT_MODE;
 	}
 
     /*  Unlocks the SPT corresponding to ptyfd, must be called before opening SPT  */
 	if( unlockpt( ptyfd ) == -1 ){      //  if error unlocking SPT...
 		perror( "unlockpt()" );
-		exit(1);    //  #SCD create return code
+		return BT_ERROR_SPT_UNLOCK;
 	}
 
     /*  Open i2c port  */
 	if( ( fd_i2c = open( i2c_devname , O_RDWR|O_NOCTTY ) ) == -1 ){
 		perror( i2c_devname );          //  if error opening port...
-		exit(1);    //  #SCD create return code
+		return BT_ERROR_I2C_OPEN;
 	}
 
     /*  Create new sc16 instance  */
 	sc16is7xx = sc16is7xx_new(fd_i2c, i2c_addr, 0/*flags*/);
 	if( !sc16is7xx ){                                                   //  if error creating instance...
 		fprintf( stderr , "Could not create sc16is7xx instance.\n" );
-		exit(1);    //  #SCD create return code
+		return BT_ERROR_SC16IS7XX_CREATE;
 	}
 
     /*  Set baud rate of sc16  */
 	if( sc16is7xx_set_baud( sc16is7xx , baudrate ) == -1 ){     //  if error setting baud...
 		perror( "sc16is7xx_set_baud()" );
-		exit(1);    //  #SCD create return code
+		return BT_ERROR_SC16IS7XX_BAUD;
 	}
 
     /*  Setting GPIOs on sc16 ***NOT USED***  */
@@ -185,13 +274,16 @@ void setup( void ){ //#SCD create int as return when return codes are created
 		fprintf( stderr , "\n" );
 		if( sc16is7xx_gpio_out( sc16is7xx , 0xff , gpio_out & 0xff ) == -1 ){
 			perror( "sc16is7xx_gpio_out" );
-			exit(1);    //  #SCD create return code
+			return BT_ERROR_GPIO;
 		}
 	}
 
     /*  Print baud rate for debug purposes  */
 	fprintf(stderr,"Baudrate is %d.\n\n", baudrate);    //#SCD debug
 }
+
+unsigned char gear[1024];
+int hold;
 
 void loop(){
 
@@ -201,16 +293,19 @@ void loop(){
 
     clearbuffer();
 
-    xread();
-    xwrite();
+
+
+    yread();
+
+
     if( message ){
-        ywrite( "hello\n\r" , 7 );
+        ywrite( buf_tx, &count );
         message = 0;
     }
 
-    sc16is7xx_stats(sc16is7xx, &xfers, &txcounter, &rxcounter);
 
     /* For debug purposes print stats of sc16  */
+    sc16is7xx_stats(sc16is7xx, &xfers, &txcounter, &rxcounter);
     fprintf(stderr,"\r%u %u %u %4d %4d\r", xfers, txcounter, rxcounter, txlvl, rxlvl);
     fflush(stderr);
 }
