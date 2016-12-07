@@ -33,9 +33,6 @@
 		</Compiler>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option link="0" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="sc16is7xx.c">
 			<Option compilerVar="CC" />
